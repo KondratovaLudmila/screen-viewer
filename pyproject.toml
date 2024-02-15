@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "screen-viewer"
+version = "0.1.0"
+description = "Easy screenshots viewer organised as a timeline"
+authors = ["KondratovaLudmila <137877876+KondratovaLudmila@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.1"
+psycopg2-binary = "^2.9.9"
+python-dotenv = "^1.0.1"
+django-environ = "^0.11.2"
+django-admin-logs = "^1.1.0"
+pyotp = "^2.9.0"
+qrcode = "^7.4.2"
+pillow = "^10.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

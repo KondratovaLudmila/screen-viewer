@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <h2>Add Location</h2>
+            </div>
+            {% if form.errors and form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+                {{form.non_field_errors}}
+            </div>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <div class="row">
+                            <label class="form-label mb-3">Location name
+                            <input type="text" class="form-control" name="full_name">
+                            <span>{{form.errors.full_name}}</span>
+                            </label>
+                            <label class="form-label mb-4">Short name
+                                <input type="text" class="form-control" name="short_name">
+                                <span>{{form.errors.short_name}}</span>
+                            </label>
+                            <label class="form-label">Path
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="directory-input" name="path">
+                                    <span>{{form.errors.path}}</span>
+                                </div>
+                            </label>
+                            <div class="btn-group mb-3">
+                                <a href="{% url 'viewer:locations' %}" class="btn btn-secondary btn-lg" role="button">Cancel</a>
+                                <button class="btn btn-lg btn-dark" type="submit">Submit</button>
+                            </div>
+                                <p class="mt-5 mb-3 text-muted text-center">&copy; 2024</p>
+                        </div>
+                    </div> 
+                </div>
+            </form>
+        </main>
+    </div>
+{% endblock %}

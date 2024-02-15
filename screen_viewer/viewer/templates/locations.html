@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <h2>Locations Managment</h2>
+            </div>
+            <div class="row">
+                <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
+                    <a href="{% url 'viewer:location_add' %}" class="btn btn-dark" role="button">Add Location</a>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr class="row justify-content-center">
+                                <th class="col-1" scope="col">ID</th>
+                                <th class="col-4" scope="col">Name</th>
+                                <th class="col-3" scope="col">Short name</th>
+                                <th class="col-3" scope="col">Path</th>
+                                <th class="col-1 text-center" scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for l in location_list %}
+                            <tr class="row justify-content-center">
+                                <td class="col-1">{{ l.id }}</td>
+                                <td class="col-4">{{ l.full_name }}</td>
+                                <td class="col-3">{{ l.short_name }}</td>
+                                <td class="col-3">{{ l.path }}</td>
+                                <td class="col-1 text-center">
+                                    <a href="{% url 'viewer:location_edit' l.id %}"><img class="p-1" src="{% static 'img/pencil-square.svg' %}" alt="Edit"></a>
+                                    <a href="{% url 'viewer:location_delete' l.id %}"><img class="p-1" src="{% static 'img/x-square.svg' %}" alt="delete"></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}

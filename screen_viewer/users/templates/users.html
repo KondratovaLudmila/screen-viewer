@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <h2>Users Managment</h2>
+            </div>
+            <div class="row">
+                <div class="d-grid gap-2 d-md-flex mb-3 justify-content-md-end">
+                    <a href="{% url 'users:add' %}" class="btn btn-dark" role="button">Add User</a>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="table-responsive">
+                    <table class="table">
+                    <thead>
+                        <tr class="row justify-content-center">
+                            <th class="col-1" scope="col">ID</th>
+                            <th class="col-4" scope="col">Username</th>
+                            <th class="col-6" scope="col">Usergroup</th>
+                            <th class="col-1 text-center" scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for u in user_list %}
+                        <tr class="row justify-content-center">
+                            <td class="col-1">{{ u.id }}</td>
+                            <td class="col-4">{{ u.username }}</td>
+                            <td class="col-6">data</td>
+                            <td class="col-1 text-center">
+                                <a href="{% url 'users:edit' u.id %}"><img class="p-1" src="{% static 'img/pencil-square.svg' %}" alt="Edit"></a>
+                                <a href="{% url 'users:delete' u.id %}"><img class="p-1" src="{% static 'img/x-square.svg' %}" alt="Edit"></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}

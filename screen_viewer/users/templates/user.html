@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <main>
+        <div class="py-5 text-center">
+            <h2>Add User</h2>
+        </div>
+        {% if form.errors and form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+            {{form.non_field_errors}}
+        </div>
+        {% endif %}
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="row justify-content-center">
+                <div class="col-md-4 col-lg-4">
+                    <div class="row">
+                        <label class="form-label mb-3">Username
+                            {{ form.username }}
+                            <span>{{ form.errors.username }}</span>
+                        </label>
+                        <label class="form-label mb-3" >Password
+                            {{ form.password1 }}
+                            <span>{{ form.errors.password }}</span>
+                        </label>
+                        <label class="form-label mb-3" >Confirm Password
+                            {{ form.password2 }}
+                            <span>{{ form.errors.password2 }}</span>
+                        </label>
+                        <label class="form-label mb-3" >Usergroup
+                            <select class="form-control" name="usergroup">
+                            </select>
+                            <span>{{ form.errors.usergroup }}</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="row g-3">
+                        <label class="form-label mb-4">Enabled Locations
+                            {{ form.locations }}
+                        </label>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="row g-3">
+                        <div class="btn-group" role="group" >
+                            <a href="{% url 'users:users' %}" class="btn btn-secondary btn-lg" role="button">Cancel</a>
+                            <button class="btn btn-dark btn-lg">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+</div>
+{% endblock %}
